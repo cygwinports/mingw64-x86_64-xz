@@ -1,7 +1,0 @@
-CROSS_HOST="x86_64-w64-mingw32"
-ORIG_PN="xz"
-inherit cross
-
-DESCRIPTION="liblzma for MinGW-w64 Win64 toolchain"
-HOMEPAGE="http://tukaani.org/xz/"
-SRC_URI="http://tukaani.org/xz/xz-${PV}.tar.xz"
