@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-xz"
-VERSION=5.2.1
+VERSION=5.2.3
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="liblzma for Win64 toolchain"
@@ -14,18 +14,18 @@ HOMEPAGE="http://tukaani.org/xz/"
 SRC_URI="http://tukaani.org/xz/xz-${VERSION}.tar.xz"
 SRC_DIR="xz-${VERSION}"
 
-RESTRICT="debuginfo"
-
 # setup requires static libraries
 # disable all executables (plus their symlinks and manpages)
+# NLS is used only for programs, not the library
 CYGCONF_ARGS="
 	--enable-static
+	--disable-nls
+	--disable-xz
+	--disable-xzdec
 	--disable-lzmadec
 	--disable-lzmainfo
 	--disable-lzma-links
 	--disable-scripts
-	--disable-xz
-	--disable-xzdec
 "
 
 src_install() {
@@ -34,5 +34,3 @@ src_install() {
 
 #	rm -fr ${D}${CROSS_DATADIR}/man/
 }
-
-KEEP_LA_FILES="none"
